@@ -17,10 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 import com.presldn.pouch.R;
 import com.presldn.pouch.ui.fragments.DashboardFragment;
 import com.presldn.pouch.ui.fragments.PouchListFragment;
@@ -53,17 +49,10 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-
-    private AdView mAdView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        checkFirstTimeUse();
-
-//        MobileAds.initialize(this, getString(R.string.app_id));
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -72,43 +61,6 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         mTitle = findViewById(R.id.title);
-
-//        mAdView = findViewById(R.id.adView);
-//        AdRequest adRequest = new AdRequest.Builder().build();
-//        mAdView.loadAd(adRequest);
-//        mAdView.setAdListener(new AdListener() {
-//            @Override
-//            public void onAdLoaded() {
-//                // Code to be executed when an ad finishes loading.
-//                mAdView.setVisibility(View.VISIBLE);
-//                Log.d(MainActivity.class.getSimpleName(), "onAdLoaded: ad loaded");
-//            }
-//
-//            @Override
-//            public void onAdFailedToLoad(int errorCode) {
-//                // Code to be executed when an ad request fail.
-//                Log.d(MainActivity.class.getSimpleName(), "onAdFailedToLoad: add failed to load");
-//                mAdView.setVisibility(View.GONE);
-//            }
-//
-//            @Override
-//            public void onAdOpened() {
-//                // Code to be executed when an ad opens an overlay that
-//                // covers the screen.
-//            }
-//
-//            @Override
-//            public void onAdLeftApplication() {
-//                // Code to be executed when the user has left the app.
-//            }
-//
-//            @Override
-//            public void onAdClosed() {
-//                // Code to be executed when when the user is about to return
-//                // to the app after tapping on an ad.
-//            }
-//        });
-
 
         changeFragment(new PouchListFragment());
 
@@ -131,51 +83,6 @@ public class MainActivity extends AppCompatActivity {
         // Commit the transaction
         transaction.commit();
     }
-
-    private void checkFirstTimeUse() {
-        //  Declare a new thread to do a preference check
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                //  Initialize SharedPreferences
-                SharedPreferences getPrefs = PreferenceManager
-                        .getDefaultSharedPreferences(getBaseContext());
-
-                //  Create a new boolean and preference and set it to true
-                boolean isFirstStart = getPrefs.getBoolean("firstStart", true);
-
-                boolean test = true;
-
-                //  If the activity has never started before...
-                // TODO: 03/01/2019 change back to isFirstStart when done testing
-                if (test) {
-
-                    //  Launch app intro
-                    final Intent i = new Intent(MainActivity.this, TutorialActivity.class);
-
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            startActivity(i);
-                        }
-                    });
-
-                    //  Make a new preferences editor
-                    SharedPreferences.Editor e = getPrefs.edit();
-
-                    //  Edit preference to make it false because we don't want this to run again
-                    e.putBoolean("firstStart", false);
-
-                    //  Apply changes
-                    e.apply();
-                }
-            }
-        });
-
-        // Start the thread
-        t.start();
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

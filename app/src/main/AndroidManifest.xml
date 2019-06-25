@@ -29,10 +29,6 @@
                 android:value="com.presldn.pouch.ui.activities.PouchActivity" />
         </activity>
         <activity
-            android:name=".ui.activities.IntroActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".ui.activities.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
@@ -43,8 +39,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activities.TutorialActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

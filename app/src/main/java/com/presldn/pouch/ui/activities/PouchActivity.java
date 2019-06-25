@@ -37,8 +37,6 @@ import butterknife.ButterKnife;
 public class PouchActivity extends AppCompatActivity {
     public static final int EDIT_POUCH_ACTIVITY_REQUEST_CODE = 2;
 
-    private AdView mAdView;
-
     private PouchViewModel mPouchViewModel;
 
     @BindView(R.id.container)
@@ -66,42 +64,6 @@ public class PouchActivity extends AppCompatActivity {
         }
 
         mPouchViewModel = ViewModelProviders.of(this).get(PouchViewModel.class);
-
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-        mAdView.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                // Code to be executed when an ad finishes loading.
-                mAdView.setVisibility(View.VISIBLE);
-                Log.d(MainActivity.class.getSimpleName(), "onAdLoaded: ad loaded");
-            }
-
-            @Override
-            public void onAdFailedToLoad(int errorCode) {
-                // Code to be executed when an ad request fail.
-                Log.d(MainActivity.class.getSimpleName(), "onAdFailedToLoad: add failed to load");
-                mAdView.setVisibility(View.GONE);
-            }
-
-            @Override
-            public void onAdOpened() {
-                // Code to be executed when an ad opens an overlay that
-                // covers the screen.
-            }
-
-            @Override
-            public void onAdLeftApplication() {
-                // Code to be executed when the user has left the app.
-            }
-
-            @Override
-            public void onAdClosed() {
-                // Code to be executed when when the user is about to return
-                // to the app after tapping on an ad.
-            }
-        });
 
         mPouchViewModel.getPouch(pouchName).observe(this, new Observer<Pouch>() {
             @Override
