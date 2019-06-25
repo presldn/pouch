@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#eeeeee</color>
+    <color name="colorAccent">#f382b3</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorText"> #2b2a30</color>
+    <color name="colorLabel">#87878f</color>
+    <color name="colorDisabled">#cccccc</color>
+    <color name="colorDepositTransaction">#06d6a0</color>
+    <color name="colorWithdrawTransaction">#EF476F</color>
+</resources>
