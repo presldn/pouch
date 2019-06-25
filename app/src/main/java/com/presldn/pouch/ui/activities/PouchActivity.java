@@ -20,9 +20,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.presldn.pouch.R;
 import com.presldn.pouch.database.Pouch;
 import com.presldn.pouch.ui.fragments.PouchInfoFragment;
